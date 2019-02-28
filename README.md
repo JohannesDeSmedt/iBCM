@@ -7,7 +7,7 @@ To this purpose, many techniques have been proposed, which mainly resort to the 
 In this paper we present the interesting Behavioral Constraint Miner (iBCM), a sequence classification technique that discovers patterns using behavioral constraint templates. The templates comprise a variety of constraints and can express patterns ranging from simple occurrence, to looping and position-based behavior over a sequence. Furthermore, iBCM also captures negative constraints, i.e. absence of particular behavior. The constraints can be discovered by using simple string operations in an efficient way. Finally, deriving the constraints with a window-based approach allows to pinpoint where the constraints hold in a string, and to detect whether patterns are subject to concept drift. Through empirical evaluation, it is shown that iBCM is better capable of classifying sequences more accurately and concisely in a scalable manner.
 
 <h2>Publication</h2>
-iBCM was presented at the <a href="http://ecmlpkdd2017.ijs.si/">European Conference on Machine Learning & Principles and Practice of Knowledge Discovery in Databases (ECML PKDD 2017)</a>, with an extended version published in <a href="https://ieeexplore.ieee.org/document/8633396">IEEE Transactions on Knowledge and Data Discovery</a>.
+iBCM was presented at the <a href="https://link.springer.com/chapter/10.1007/978-3-319-71246-8_2">European Conference on Machine Learning & Principles and Practice of Knowledge Discovery in Databases (ECML PKDD 2017)</a>, with an extended version published in <a href="https://ieeexplore.ieee.org/document/8633396">IEEE Transactions on Knowledge and Data Discovery</a>.
 
 <h2>Implementation</h2>
 You can use the implementation as follows:
