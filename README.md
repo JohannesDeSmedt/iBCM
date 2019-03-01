@@ -24,7 +24,7 @@ java -jar iBCM.jar -d auslan2,context -s 0.5
 <li>-w for the window parameter of iBCM</li>
 </ul>
 Datsets are included in the datasets folder, which should be used in the home directory of the .jar file.
-Values for datasets: "Unix", "auslan2", "aslbu", "pioneer", "context", and "news".
-If you wish to test your own datasets, this can be done for all techniques (all but MiSeRe and SCIP) using the SPMF format, by including 1 .dat file with the sequence in logs/SPMF_data/ and 1 file containing the label on the same line as the sequence in file .lab.
+Values for datasets: "Unix", "auslan2", "aslbu", "pioneer", "context", and "reuters".
+If you wish to test your own datasets, this can be done using the SPMF format, by including one .dat file with the sequence and 1 file containing the label on the same line as the sequence in file .lab.
 
-The results are stored in a csv file (location can be specified with option -o).
+The results are stored in a csv file.
