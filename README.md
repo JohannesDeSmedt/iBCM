@@ -14,7 +14,7 @@ iBCM was presented at the <a href="https://link.springer.com/chapter/10.1007/978
 <h2>Implementation</h2>
 You can use the JAR file as follows:
 
-java -jar iBCM.jar -d auslan2,context -s 0.5
+`java -jar iBCM.jar -d auslan2,context -s 0.5'
 
 <h3>The following arguments are used:</h3>
 <ul><li>-h for help</li>	
