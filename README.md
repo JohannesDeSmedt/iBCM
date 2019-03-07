@@ -12,7 +12,7 @@ In this paper we present the interesting Behavioral Constraint Miner (iBCM), a s
 iBCM was presented at the <a href="https://link.springer.com/chapter/10.1007/978-3-319-71246-8_2">European Conference on Machine Learning & Principles and Practice of Knowledge Discovery in Databases (ECML PKDD 2017)</a>, and later published as an extended version in <a href="https://ieeexplore.ieee.org/document/8633396">IEEE Transactions on Knowledge and Data Discovery</a>.
 
 <h2>Implementation</h2>
-You can use the implementation as follows upon compilation:
+You can use the JAR file as follows:
 
 java -jar iBCM.jar -d auslan2,context -s 0.5
 
