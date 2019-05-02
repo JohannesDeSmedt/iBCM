@@ -28,3 +28,5 @@ Values for datasets: "Unix", "auslan2", "aslbu", "pioneer", "context", and "reut
 If you wish to test your own datasets, this can be done using the SPMF format, by including one .dat file with the sequence and 1 file containing the label on the same line as the sequence in file .lab.
 
 The results are stored in a csv file.
+
+There is also a quick and dirty Python implementation available. Results are the same, but you have to dig in to extra the features and use them towards classification/other purposes. Is compatible with the SPMF format.
