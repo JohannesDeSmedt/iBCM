@@ -29,4 +29,4 @@ If you wish to test your own datasets, this can be done using the SPMF format, b
 
 The results are stored in a csv file.
 
-There is also a quick and dirty Python implementation available. Results are the same, but you have to dig in to extra the features and use them towards classification/other purposes. Is compatible with the SPMF format.
+There is also a quick and dirty Python implementation available. Results are the same, but you have to dig in to extra the features and use them towards classification/other purposes. It is also not optimised for performance. Is compatible with the SPMF format.
