@@ -7,7 +7,7 @@ class Constraint:
         self.w =w
         
     def __str__(self):
-        return self.name+'('+ str(self.a)+','+str(self.b)+')_'+str(self.w)
+        return self.name+'('+ str(self.a)+'-'+str(self.b)+')'+str(self.w)
 
 
     def __hash__(self):
@@ -21,6 +21,15 @@ class Constraint:
                 return True
             else:
                 return False
+             
+                
+class Annotated_trace:
+
+    def __init__(self, name, constraints, label):
+        self.string = name
+        self.constraints = constraints
+        self.label = label
+    
 
 class ConstraintMining:
    
@@ -177,5 +186,95 @@ class ConstraintMining:
             if i in a_list:
                 output.append(i)
         return output
+    
+    
+def reduce_feature_space(constraints):
+    print('Begin size: ', len(constraints))
 
+    toRemove = set()
+    
+    lookAt = set()
+    lookOut = set()
+    for c in constraints:
+        if 'succession' in c.name:
+            lookAt.add(c)
+        if 'response' in c.name or 'precedence' in c.name or 'succession' in c.name or 'co_existence' in c.name:
+            lookOut.add(c)
 
+    for c in lookAt:
+        for c2 in lookOut:
+            if c.w==c2.w and c.a==c2.a and c.b==c2.b:
+                if c.name == 'succession' and (c2.name=='response' or c2.name=='precedence'):
+                    toRemove.add(c2)
+                if c.name == 'alternate_succession' and 'chain' not in c.name and ('response' in c2.name or 'precedence' in c2.name or c2.name=='succession'):
+                    toRemove.add(c2)
+                if c.name == 'chain_succession' and ('response' in c2.name or 'precedence' in c2.name or c2.name=='succession' or c2.name=='alternate_succession'):
+                    toRemove.add(c2)
+            if c.w==c2.w and ((c.a==c2.a and c.b==c2.b) or (c.b==c2.a and c.a==c2.b)):   
+                 if c.name=='succession' and c2.name=='co_existence':
+                     toRemove.add(c2)
+    print('Remove size (Succession removal): ', len(toRemove))
+    constraints = constraints.difference(toRemove)
+    toRemove = set()
+		
+    lookAt = set()
+    for c in constraints:
+        if 'response' in c.name or 'precedence' in c.name:
+            lookAt.add(c)
+		
+    for c in lookAt:
+        if c.name == 'chain_response':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and c.b==c2.b:
+                    if c2.name == 'response' or c2.name == 'alternate_response':
+                        toRemove.add(c2)
+        if c.name == 'chain_precedence':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and c.b==c2.b:
+                    if c2.name == 'precedence' or c2.name == 'alternate_precedence':
+                        toRemove.add(c2)
+        if c.name == 'alternate_response':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and c.b==c2.b:
+                    if c2.name == 'response':
+                        toRemove.add(c2)
+        if c.name == 'alternate_precedence':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and c.b==c2.b:
+                    if c2.name == 'precedence':
+                        toRemove.add(c2)                        
+    print('Remove size (Chain/Alternate removal): ', len(toRemove))
+    constraints = constraints.difference(toRemove)
+    toRemove = set()
+    lookAt = set()
+    for c in constraints:
+        if 'exactly' in c.name or 'existence' in c.name:
+            lookAt.add(c)
+		
+    for c in lookAt:
+        if c.name == 'existence3':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and (c2.name=='existence2' or c2.name=='existence'):
+                    toRemove.add(c2)
+        if c.name == 'existence2':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and c2.name=='existence':
+                    toRemove.add(c2)
+        if c.name == 'exactly2':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and (c2.name=='existence' or c2.name=='exactly' or c2.name=='existence2'):
+                    toRemove.add(c2)                    
+        if c.name == 'exactly2':
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and (c2.name=='existence' or c2.name=='exactly' or c2.name=='existence2'):
+                    toRemove.add(c2)   
+        if ('existence' in c.name or 'exactly' in c.name) and 'co_existence' not in c.name:
+            for c2 in lookAt:
+                if c.w==c2.w and c.a==c2.a and ('existence' in c2.name or 'exactly' in c2.name) and 'co_existence' not in c2.name:
+                    for c3 in constraints:
+                        if c3.name=='co_existence' and c2.w==c3.w and ((c.a==c3.a and c2.b==c3.b) or (c.b==c3.a and c2.a==c3.b)):
+                            toRemove.add(c3)
+    print('Remove size (Unary removal): ', len(toRemove))
+    constraints = constraints.difference(toRemove)
+    print('End size: ', len(constraints))
+    return constraints	
