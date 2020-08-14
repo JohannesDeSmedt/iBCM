@@ -20,7 +20,7 @@ To use iBCM only with Python, store the datasets in an adjacent ```./datasets/``
 <h3>Python + Java</h3>
 To create cross validation training/test files from datasets in an adjacent ```./datasets/``` folder, use [create_training_test_datasets.py](./python/create_training_test_datasets.py). This will store the required files under ```./datasets/training-test-data/``` as well as separate files for MiSeRe under ```./datasets/training-test-data/MiSeRe_data/```.
 
-Then you can run the provided Java code with the corresponding number of folds. The results are stored in the same folders as the folds' original files. Next, you can classify using [run_classification.py](./python/run_classification.py)
+Then you can run the provided Java code with the corresponding number of folds. The results are stored in the same folders as the folds' original files. Next, you can classify using [run_classification.py](./python/run_classification.py).
 
 You can use the JAR file as follows:
 
