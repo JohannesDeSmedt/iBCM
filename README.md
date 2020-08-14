@@ -15,7 +15,7 @@ iBCM was presented at the <a href="https://link.springer.com/chapter/10.1007/978
 There are two ways of using iBCM: either using the full Python implementation, or using Python to create training/test sets, mine the sequences with Java, and perform classification with Python again. Java can leverage multithreading and an overall much more efficient code base, as well as mine sequences with ISM, MiSeRe, PrefixSPAN, SPADE, and BIDE for experimental evaluation.
 
 <h3>Python</h3>
-To use iBCM only with Python, store the datasets in an adjacent ```./datasets/``` folder and run [iBCM_python.py](./python/iBCM_python.py). The implementation also uses [run_iBCM.py](./python/run_iBCM.py) and [iBCM.py](./python/iBCM.py).
+To use iBCM only with Python, store the datasets in an adjacent datasets folder and run [iBCM_Python.py](./python/iBCM_Python.py). The implementation also uses [run_iBCM.py](./python/run_iBCM.py) and [iBCM.py](./python/iBCM.py).
 
 <h3>Python + Java</h3>
 To create cross validation training/test files from datasets in an adjacent ```./datasets/``` folder, use [create_training_test_datasets.py](./python/create_training_test_datasets.py). This will store the required files under ```./datasets/training-test-data/``` as well as separate files for MiSeRe under ```./datasets/training-test-data/MiSeRe_data/```.
