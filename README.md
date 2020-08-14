@@ -24,14 +24,19 @@ Then you can run the provided Java code with the corresponding number of folds. 
 
 You can use the JAR file as follows:
 
-```java -jar iBCM.jar -d auslan2,context -s 0.5```
+```java -jar iBCM.jar -d auslan2,context -t iBCM,MiSeRe -s 0.5 -n 2```
 
 <h3>The following arguments are used:</h3>
 <ul><li>-h for help</li>	
 <li>-d for datasets (e.g. Unix,auslan2)</li>
 <li>-s for support values of support-based approaches (e.g. 0.1,0.2,0.3)</li>
-<li>-v for verbosity
+<li>-t for the techniques that need to be used (possible values: iBCM,MiSeRe,SPADE,PrefixSPAN,BIDE,ISM)</li>
 <li>-w for the window parameter of iBCM</li>
+<li>-n for the number of seconds for MiSeRe</li>
+<li>-im for the maximum number of iterations for ISM</li>
+<li>-is for the number of steps for ISM</li>
+ <li>-f for the number of folds</li>
+  
 </ul>
 Datsets are included in the datasets folder, which should be used in the home directory of the .jar file.
 Values for datasets: "Unix", "auslan2", "aslbu", "pioneer", "context", and "reuters".
