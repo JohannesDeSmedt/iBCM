@@ -106,23 +106,24 @@ def run_iBCM(dataset, support):
             X_test = test.drop(['label'], axis=1)
             
             # print('#Features:', len(X_train.columns))
-            
+            if len(X_train.columns) < 2:
+                print('No features for fold', i)
+                continue
+                        
             feat_sum += len(X_train.columns)
-            try:
-                classifier.fit(X_train,y_train)
-                predictions = classifier.predict(X_test)
-                predictions_prob = classifier.predict_proba(X_test)
-                
-                acc = accuracy_score(y_test,predictions)
-                auc = 0 #roc_auc_score(y_test,predictions_prob[:,1])
-                acc_sum += acc
-                auc_sum += auc
-            except:
-                print('No features')
-                break
-                acc = 0
-                acc_sum += 0
-                auc_sum += 0     
+
+            classifier.fit(X_train,y_train)
+            predictions = classifier.predict(X_test)
+            predictions_prob = classifier.predict_proba(X_test)
+            
+            
+            acc = accuracy_score(y_test,predictions)
+            if len(y_test.unique()) > 2:
+                auc = roc_auc_score(y_test,predictions_prob,multi_class='ovo')
+            else:
+                auc = roc_auc_score(y_test,predictions_prob[:,1])
+            acc_sum += acc
+            auc_sum += auc
         
         avg_feat = feat_sum/no_folds
         avg_acc = acc_sum/no_folds
@@ -151,6 +152,6 @@ write_results = True
 
 for dataset in ['auslan2','aslbu','context','pioneer','Unix']:
     print('\nDataset:', dataset)
-    for support in [0.2,0.4,0.6,0.8]:
+    for support in [0.1]:#0.2,0.4,0.6,0.8]:
         print('\nSupport level:', support)
         run_iBCM(dataset, support)
