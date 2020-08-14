@@ -12,7 +12,7 @@ In this paper we present the interesting Behavioral Constraint Miner (iBCM), a s
 iBCM was presented at the <a href="https://link.springer.com/chapter/10.1007/978-3-319-71246-8_2">European Conference on Machine Learning & Principles and Practice of Knowledge Discovery in Databases (ECML PKDD 2017)</a>, and later published as an extended version in <a href="https://ieeexplore.ieee.org/document/8633396">IEEE Transactions on Knowledge and Data Discovery</a>.
 
 <h2>Implementation</h2>
-There are two ways of using iBCM: either using the full Python implementation, or using Python to create training/test sets, mine the sequences with Java, and perform classification with Python again. Java can leverage multithreading and an overall much more efficient code base, as well as mine sequences with ISM, MiSeRe, PrefixSPAN, SPADE, and BIDE for experimental evaluation.
+There are two ways of using iBCM: either using the full Python implementation, or using Python to create training/test sets, mine the sequences with Java, and perform classification with Python again. Java can leverage multithreading and an overall much more efficient code base, as well as mine sequences with [ISM](https://github.com/mast-group/sequence-mining), [MiSeRe](http://www.misere.co.nf/), [PrefixSPAN}(http://hanj.cs.illinois.edu/pdf/span01.pdf), [SPADE](https://link.springer.com/article/10.1023/A:1007652502315), and [BIDE](https://ieeexplore.ieee.org/document/1319986) for experimental evaluation.
 
 <h3>Python</h3>
 To use iBCM only with Python, store the datasets in an adjacent datasets folder and run [iBCM_Python.py](./python/iBCM_Python.py). The implementation also uses [run_iBCM.py](./python/run_iBCM.py) and [iBCM.py](./python/iBCM.py).
