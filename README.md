@@ -1,6 +1,6 @@
 # iBCM (interesting Behavioral Constraint Miner)
 
-This document supports the Java implementation of the sequence mining/classifcation algorithm iBCM.
+This document supports the Java and Python implementation of the sequence mining/classifcation algorithm iBCM.
 
 <h2>About</h2>
 Sequence classification deals with the task of finding discriminative and concise sequential patterns. 
@@ -18,7 +18,7 @@ There are two ways of using iBCM: either using the full Python implementation, o
 To use iBCM only with Python, store the datasets in an adjacent ```./datasets/``` folder and run [iBCM_python.py](./python/iBCM_python.py). The implementation also uses [run_iBCM.py](./python/run_iBCM.py) and [iBCM.py](./python/iBCM.py).
 
 <h3>Python + Java</h3>
-To create cross validation training/test files from datasets in an adjacent ```./datasets/``` folder, use [create_training_test_datasets.py](./python/create_trainin_test_datasets.py). This will store the required files under ```./datasets/training-test-data/``` as well as separate files for MiSeRe under ```./datasets/training-test-data/MiSeRe_data/```.
+To create cross validation training/test files from datasets in an adjacent ```./datasets/``` folder, use [create_training_test_datasets.py](./python/create_training_test_datasets.py). This will store the required files under ```./datasets/training-test-data/``` as well as separate files for MiSeRe under ```./datasets/training-test-data/MiSeRe_data/```.
 
 Then you can run the provided Java code with the corresponding number of folds. The results are stored in the same folders as the folds' original files. Next, you can classify using [run_classification.py](./python/run_classification.py)
 
